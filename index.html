@@ -1,8 +1,377 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joopa Digital - Under Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #101a1d; /* Slightly darker, more professional blue-gray */
+            color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo {
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fe6b01;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fe6b01;
+        }
+        
+        .message {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Allow items to wrap on small screens */
+        }
+        
+        .countdown-item {
+            background-color: #fe6b01;
+            color: white;
+            border-radius: 8px; /* Slightly rounder corners */
+            padding: 1rem;
+            min-width: 80px;
+            margin: 0.5rem 0; /* Add vertical spacing when items wrap */
+        }
+        
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Allow social icons to wrap */
+        }
+        
+        .social-links a {
+            color: #fe6b01;
+            transition: opacity 0.3s, transform 0.2s;
+            padding: 10px; /* Larger tap target for mobile */
+        }
+        
+        .social-links a:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 0.8rem;
+            }
+            
+            .countdown-value {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .message p {
+                font-size: 1rem;
+            }
+            
+            .countdown {
+                gap: 0.8rem;
+            }
+            
+            .countdown-item {
+                min-width: 65px;
+                padding: 0.7rem;
+            }
+            
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+        }
+
+        /* Animation */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .working {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #fe6b01;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+        
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .contact-info {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #a8aeb3;
+        }
+        
+        .contact-info a {
+            color: #fe6b01;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #ff8533;
+        }
+        
+        /* Added for better desktop experience */
+        @media (min-width: 1200px) {
+            .container {
+                padding: 3rem;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .message {
+                max-width: 800px;
+            }
+            
+            .message p {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 1.2rem;
+            }
+            
+            .countdown-value {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
 <body>
+    <div class="container">
+        <div class="logo">
+            Joopa Digital
+        </div>
+        
+        <h1 class="pulse">We're Upgrading Our Digital Experience</h1>
+        
+        <div class="message">
+            <p>Our website is currently undergoing scheduled maintenance to bring you an enhanced digital marketing experience.</p>
+            <p>We're working hard to make improvements and will be back shortly with new features and optimized performance.</p>
+        </div>
+        
+        <div class="working">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-value" id="days">0</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="hours">0</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="minutes">0</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-value" id="seconds">0</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 5.8C21.2 6.1 20.4 6.3 19.5 6.4C20.4 5.9 21.1 5.1 21.4 4.2C20.6 4.7 19.7 5 18.8 5.2C18 4.4 16.9 3.9 15.7 3.9C13.5 3.9 11.6 5.7 11.6 8C11.6 8.3 11.7 8.6 11.7 8.9C8.3 8.7 5.3 7.1 3.2 4.7C2.9 5.3 2.7 5.9 2.7 6.6C2.7 7.9 3.4 9 4.3 9.7C3.6 9.7 2.9 9.5 2.4 9.2C2.4 9.2 2.4 9.2 2.4 9.3C2.4 11.3 3.8 12.9 5.7 13.3C5.4 13.4 5.1 13.4 4.8 13.4C4.6 13.4 4.3 13.4 4.1 13.3C4.6 14.9 6.1 16.1 7.8 16.1C6.4 17.2 4.7 17.8 2.8 17.8C2.5 17.8 2.3 17.8 2 17.7C3.7 18.9 5.8 19.5 8 19.5C15.7 19.5 19.9 13.5 19.9 8.3C19.9 8.1 19.9 7.9 19.9 7.7C20.7 7.1 21.4 6.4 22 5.8Z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C14.717 2 15.056 2.01 16.122 2.06C17.187 2.11 17.912 2.277 18.55 2.525C19.21 2.779 19.766 3.123 20.322 3.678C20.8305 4.1779 21.224 4.78259 21.475 5.45C21.722 6.087 21.89 6.813 21.94 7.878C21.987 8.944 22 9.283 22 12C22 14.717 21.99 15.056 21.94 16.122C21.89 17.187 21.722 17.912 21.475 18.55C21.2247 19.2178 20.8311 19.8226 20.322 20.322C19.822 20.8303 19.2173 21.2238 18.55 21.475C17.913 21.722 17.187 21.89 16.122 21.94C15.056 21.987 14.717 22 12 22C9.283 22 8.944 21.99 7.878 21.94C6.813 21.89 6.088 21.722 5.45 21.475C4.78233 21.2245 4.17753 20.8309 3.678 20.322C3.16941 19.8222 2.77593 19.2175 2.525 18.55C2.277 17.913 2.11 17.187 2.06 16.122C2.013 15.056 2 14.717 2 12C2 9.283 2.01 8.944 2.06 7.878C2.11 6.812 2.277 6.088 2.525 5.45C2.77524 4.78218 3.1688 4.17732 3.678 3.678C4.17767 3.16923 4.78243 2.77573 5.45 2.525C6.088 2.277 6.812 2.11 7.878 2.06C8.944 2.013 9.283 2 12 2ZM12 7C10.6739 7 9.40215 7.52678 8.46447 8.46447C7.52678 9.40215 7 10.6739 7 12C7 13.3261 7.52678 14.5979 8.46447 15.5355C9.40215 16.4732 10.6739 17 12 17C13.3261 17 14.5979 16.4732 15.5355 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5355 8.46447C14.5979 7.52678 13.3261 7 12 7ZM18.5 6.75C18.5 6.41848 18.3683 6.10054 18.1339 5.86612C17.8995 5.6317 17.5815 5.5 17.25 5.5C16.9185 5.5 16.6005 5.6317 16.3661 5.86612C16.1317 6.10054 16 6.41848 16 6.75C16 7.08152 16.1317 7.39946 16.3661 7.63388C16.6005 7.8683 16.9185 8 17.25 8C17.5815 8 17.8995 7.8683 18.1339 7.63388C18.3683 7.39946 18.5 7.08152 18.5 6.75ZM12 9C12.7956 9 13.5587 9.31607 14.1213 9.87868C14.6839 10.4413 15 11.2044 15 12C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 15 12 15C11.2044 15 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 12C9 11.2044 9.31607 10.4413 9.87868 9.87868C10.4413 9.31607 11.2044 9 12 9Z"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 3C4.57 3 3 4.57 3 6.5C3 8.43 4.57 10 6.5 10C8.43 10 10 8.43 10 6.5C10 4.57 8.43 3 6.5 3ZM3 12C3 11.45 3.45 11 4 11H9C9.55 11 10 11.45 10 12V21H8V12H4V21H3V12ZM12.5 5.25C12.5 4.84 12.84 4.5 13.25 4.5H15C15.5 4.5 15.5 5 15.84 5.25L17.25 6.75C17.66 7.16 18 7.5 18.5 7.5H21C21.55 7.5 22 7.95 22 8.5V9.5H12V5.75C12 5.34 12.34 5 12.75 5H13.5C13.78 5 14 5.22 14 5.5V5.55C14 5.67 13.95 5.78 13.86 5.86L13.11 6.61C13.04 6.68 13 6.78 13 6.89V7C13 7.55 13.45 8 14 8H15.5C16.05 8 16.5 7.55 16.5 7V6.89C16.5 6.78 16.46 6.68 16.39 6.61L15.64 5.86C15.55 5.78 15.5 5.67 15.5 5.55V5.5C15.5 5.22 15.72 5 16 5H16.75C17.16 5 17.5 5.34 17.5 5.75V9.5H22V19C22 20.1 21.1 21 20 21H13C12.45 21 12 20.55 12 20V12C12 11.45 12.45 11 13 11H20C20.55 11 21 11.45 21 12V19H19V12H13.5C12.95 12 12.5 11.55 12.5 11V5.25Z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>For urgent inquiries, please contact us at:</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:support@joopadigital.com">support@joopadigital.com</a></p>
+                <p>Phone: <a href="tel:+9779768866299">+977 9768866299</a></p>
+            </div>
+            <p>&copy; 2025 Joopa Digital. All rights reserved.</p>
+        </div>
+    </div>
 
-<h1>joopa ko owner sukey don</h1>
+    <script>
+        // Set the date we're counting down to (10 days from now)
+        const countDownDate = new Date().getTime() + (10 * 24 * 60 * 60 * 1000);
 
+        // Update the countdown every 1 second
+        const countdown = setInterval(function() {
+            // Get today's date and time
+            const now = new Date().getTime();
+            
+            // Find the distance between now and the countdown date
+            const distance = countDownDate - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+            
+            // If the countdown is finished, display a message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").textContent = "0";
+                document.getElementById("hours").textContent = "0";
+                document.getElementById("minutes").textContent = "0";
+                document.getElementById("seconds").textContent = "0";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
